@@ -1,8 +1,6 @@
 package com.revature.sharezone.actions;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "actions")
@@ -10,6 +8,8 @@ import javax.persistence.Table;
 public class Actions {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     private String userstatus;
     private String usercomment;

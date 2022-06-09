@@ -1,9 +1,11 @@
 package com.revature.sharezone.userprofile;
 
 
-import org.springframework.boot.actuate.endpoint.InvalidEndpointRequestException;
+import com.revature.sharezone.util.exceptions.AuthenticationException;
+import com.revature.sharezone.util.exceptions.InvalidRequestException;
+import com.revature.sharezone.util.exceptions.ResourcePersistanceException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
 
     private UserProfileDao userProfileDao;
 
+    @Autowired
     public UserProfileServices(UserProfileDao userProfileDao){
         this.userProfileDao = userProfileDao;
     }
@@ -23,6 +26,13 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
         return userProfiles;
     }
 
+    @Override
+    public UserProfile readById(String id) throws ResourcePersistanceException{
+
+        // Add .get() after findById as it is an Optional and not just a Trainer class that is returned byt he CrudRepository
+        UserProfile userProfile = userProfileDao.findById(id).get();
+        return userProfile;
+    }
     @Override
     public UserProfile update(UserProfile updatedUserProfile){
         userProfileDao.save(updatedUserProfile);
@@ -42,17 +52,17 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
 
     public UserProfile create(UserProfile newUserProfile){
         if(!validateInput(newUserProfile)){
-            throw new InvalidEndpointRequestException();
+            throw new InvalidRequestException("UserProfile input was not validated, either empty String or null values");
         }
 
         if(validateUsernameNotUsed(newUserProfile.getUsername())){
-            throw new InvalidRequestException();
+            throw new InvalidRequestException("Username is already in use. Please try again with another email or login into previous made account.");
         }
 
         UserProfile persistedUserProfile = userProfileDao.save(newUserProfile);
 
         if(persistedUserProfile == null){
-            throw new ResourcePersistanceException()
+            throw new ResourcePersistanceException("UserProfile was not persisted to the database upon registration");
         }
         return persistedUserProfile;
     }
@@ -78,11 +88,11 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
 
         UserProfile authenticatedUserProfile = userProfileDao.authenticateUserProfile(username, password);
 
-        if (authenticatedUserProfile == null){
+        if (authenticatedUserProfile.isPresent()){
             throw new AuthenticationException("Unauthenticated user, information provided was not consistent with our database.");
         }
 
-        return authenticatedUserProfile;
+        return authenticatedUserProfile.get();
 
     }
 

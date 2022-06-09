@@ -2,6 +2,8 @@ package com.revature.sharezone.tags;
 
 import javax.persistence.*;
 
+// import com.revature.sharezone.user_profile.UserProfile;
+
 @Entity
 @Table(name = "tags")
 public class Tags {
@@ -17,20 +19,21 @@ public class Tags {
     private String favorite_tvshow;
     private String favorite_character;
 
-//    @ManyToOne
-//    @JoinColumn(name = "username", referencedColumnName = "username")
-    private String username;
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private UserProfile userProfile;
+    //private String username;
 
     public Tags() {}
 
-    public Tags(int id, String favorite_city, String favorite_team, String favorite_movie, String favorite_tvshow, String favorite_character, String username) {
+    public Tags(int id, String favorite_city, String favorite_team, String favorite_movie, String favorite_tvshow, String favorite_character, UserProfile userProfile) {
         this.id = id;
         this.favorite_city = favorite_city;
         this.favorite_team = favorite_team;
         this.favorite_movie = favorite_movie;
         this.favorite_tvshow = favorite_tvshow;
         this.favorite_character = favorite_character;
-        this.username = username;
+        this.userProfile = userProfile;
     }
 
     public int getId() {
@@ -81,13 +84,14 @@ public class Tags {
         this.favorite_character = favorite_character;
     }
 
-    public String getUsername() {
-        return username;
+    public UserProfile getUserProfile() {
+        return userProfile;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
+
 
     @Override
     public String toString() {
@@ -98,7 +102,7 @@ public class Tags {
                 ", favorite_movie='" + favorite_movie + '\'' +
                 ", favorite_tvshow='" + favorite_tvshow + '\'' +
                 ", favorite_character='" + favorite_character + '\'' +
-                ", username='" + username + '\'' +
+                ", userProfile=" + userProfile +
                 '}';
     }
 }

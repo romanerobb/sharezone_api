@@ -6,11 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.AuthenticationException;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-public class UserProfileServlet implements Authable{
+public class UserProfileServlet {
 
     private final UserProfileServices userProfileServices;
 
@@ -43,7 +44,7 @@ public class UserProfileServlet implements Authable{
 
     @GetMapping("/UserProfileEx")
     public void userProfileEx(){
-        throw new AuthenticationException("Oh no userProfile not auth");
+        throw new RuntimeException("Oh no userProfile not auth");
     }
 
     @GetMapping("/userprofile/{email}")

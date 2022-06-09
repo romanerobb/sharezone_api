@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Actions {
 
     @Id
-    private Integer id;
+    private int id;
     private String userstatus;
     private String usercomment;
     private Boolean userlike;
@@ -19,7 +19,7 @@ public class Actions {
     public Actions() {
     }
 
-    public Actions(Integer id, String userstatus, String usercomment, Boolean userlike, String username) {
+    public Actions(int id, String userstatus, String usercomment, Boolean userlike, String username) {
         super();
         this.id = id;
         this.userstatus = userstatus;
@@ -28,7 +28,7 @@ public class Actions {
         this.username = username;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.*;
 import java.util.List;
 
 @Service
@@ -12,12 +13,10 @@ import java.util.List;
 public class ActionsServices implements Servicable<Actions> {
 
     private final ActionsDao actionsDao;
-    private final TagsDao tagsDao;
 
     @Autowired
-    public ActionsServices(TagsDao tagsDao, ActionsDao actionsDao) {
+    public ActionsServices(ActionsDao actionsDao) {
         this.actionsDao = actionsDao;
-        this.tagsDao = tagsDao;
     }
 
     @Override
@@ -27,7 +26,27 @@ public class ActionsServices implements Servicable<Actions> {
 
     @Override
     public List<Actions> readAll() {
-        return (List)
+        return (List<Actions>) actionsDao.findAll();
+    }
+
+    @Override
+    public Actions readById (String id) {
+        return actionsDao.findById(Integer.parseInt(id)).get();
+    }
+
+    @Override
+    public Actions update (Actions updatedActions) {
+        return actionsDao.save(updatedActions);
+    }
+
+    @Override
+    public boolean delete (String id) {
+        return false;
+    }
+
+    @Override
+    public boolean validateInput(Actions object) {
+        return false;
     }
 
 }

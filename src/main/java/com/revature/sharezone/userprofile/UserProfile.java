@@ -11,18 +11,19 @@ public class UserProfile {
     private String username;
     private String fname;
     private String lname;
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
+    private String emailaddress;
+    //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String userpassword;
     private int age;
     private boolean is_admin;
     private boolean is_subscriber;
 
-
-    public UserProfile(String username, String fname, String lname, String userpassword, int age, boolean is_admin, boolean is_subscriber) {
-        super();
+    public UserProfile(String username, String fname, String lname, String emailaddress, String userpassword, int age, boolean is_admin, boolean is_subscriber) {
         this.username = username;
         this.fname = fname;
         this.lname = lname;
+        this.emailaddress = emailaddress;
         this.userpassword = userpassword;
         this.age = age;
         this.is_admin = is_admin;
@@ -51,6 +52,14 @@ public class UserProfile {
 
     public void setLname(String lname) {
         this.lname = lname;
+    }
+
+    public String getEmailaddress() {
+        return emailaddress;
+    }
+
+    public void setEmailaddress(String emailaddress) {
+        this.emailaddress = emailaddress;
     }
 
     public String getUserpassword() {
@@ -91,6 +100,7 @@ public class UserProfile {
                 "username='" + username + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
+                ", emailaddress='" + emailaddress + '\'' +
                 ", userpassword='" + userpassword + '\'' +
                 ", age=" + age +
                 ", is_admin=" + is_admin +

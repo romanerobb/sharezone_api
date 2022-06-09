@@ -1,0 +1,5 @@
+.idea/
+sharezone_api.iml
+out/
+target/
+src/main/resources/application.yaml

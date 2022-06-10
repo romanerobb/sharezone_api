@@ -1,9 +1,13 @@
 package com.revature.sharezone.userprofile;
 
-
 import com.revature.sharezone.util.exceptions.AuthenticationException;
 import com.revature.sharezone.util.exceptions.InvalidRequestException;
 import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
+<<<<<<< HEAD
+=======
+import com.revature.sharezone.userprofile.UserProfile;
+import com.revature.sharezone.userprofile.UserProfileDao;
+>>>>>>> cb8209170281249ccb6d6b190901c1418f8687f5
 import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +17,11 @@ import java.util.Optional;
 
 @Service
 @Transactional
+<<<<<<< HEAD
 public class UserProfileServices  implements Serviceable<UserProfile> {
+=======
+public class UserProfileServices implements Serviceable<UserProfile> {
+>>>>>>> cb8209170281249ccb6d6b190901c1418f8687f5
 
     private UserProfileDao userProfileDao;
 

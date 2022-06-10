@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\revature\sharezone\userprofile\UserProfileServices.class
 com\revature\sharezone\tags\TagsServlets.class
 com\revature\sharezone\userprofile\UserProfile.class
@@ -7,10 +8,26 @@ com\revature\sharezone\util\aspects\ErrorExceptionAspect.class
 com\revature\sharezone\actions\Actions.class
 com\revature\sharezone\actions\ActionsDao.class
 com\revature\sharezone\actions\ActionsServlet.class
+=======
+com\revature\sharezone\tags\TagsDao.class
+com\revature\sharezone\userprofile\UserProfileServices.class
+com\revature\sharezone\tags\TagsServlets.class
+com\revature\sharezone\userprofile\UserProfile.class
+com\revature\sharezone\userprofile\UserProfileDao.class
+com\revature\sharezone\userprofile\UserProfileServlet.class
+com\revature\sharezone\util\interfaces\Authable.class
+com\revature\sharezone\util\aspects\ErrorExceptionAspect.class
+com\revature\sharezone\actions\Actions.class
+com\revature\sharezone\tags\Tags.class
+com\revature\sharezone\actions\ActionsDao.class
+com\revature\sharezone\actions\ActionsServlet.class
+com\revature\sharezone\util\exceptions\AuthenticationException.class
+>>>>>>> cb8209170281249ccb6d6b190901c1418f8687f5
 com\revature\sharezone\util\interfaces\Serviceable.class
 com\revature\sharezone\SharezoneApplication.class
 com\revature\sharezone\util\aspects\LoggingAspect.class
 com\revature\sharezone\tags\TagsServices.class
+<<<<<<< HEAD
 com\revature\sharezone\util\exceptions\ResourcePersistenceException.class
 com\revature\sharezone\contents\ContentsServices.class
 com\revature\sharezone\actions\ActionsServices.class
@@ -22,4 +39,9 @@ com\revature\sharezone\util\exceptions\AuthenticationException.class
 com\revature\sharezone\contents\ContentsServlet.class
 com\revature\sharezone\contents\ContentsDao.class
 com\revature\sharezone\util\interfaces\Crudable.class
+=======
+com\revature\sharezone\util\interfaces\Crudable.class
+com\revature\sharezone\util\exceptions\ResourcePersistenceException.class
+com\revature\sharezone\actions\ActionsServices.class
+>>>>>>> cb8209170281249ccb6d6b190901c1418f8687f5
 com\revature\sharezone\util\exceptions\InvalidRequestException.class

@@ -20,11 +20,11 @@ public class ActionsServlet {
         this.actionsServices = actionsServices;
     }
 
-    @PostMapping("/actions")
-    public ResponseEntity<UserProfile> saveActions(@RequestBody Actions actions){
-        Actions newActions = actionsServices.create(actions);
-        return new ResponseEntity<>(newActions, HttpStatus.CREATED);
-    }
+//    @PostMapping("/actions")
+//    public ResponseEntity<UserProfile> saveActions(@RequestBody Actions actions){
+//        Actions newActions = actionsServices.create(actions);
+//       // return new ResponseEntity<>(newActions, HttpStatus.CREATED);
+//    }
 
     @GetMapping("/actions-findall")
     public List<Actions> getAllActionsServices(){

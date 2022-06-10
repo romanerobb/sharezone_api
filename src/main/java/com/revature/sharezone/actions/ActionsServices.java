@@ -10,10 +10,6 @@ import java.util.List;
 
 @Service
 @Transactional
-<<<<<<< HEAD
-=======
-
->>>>>>> cb8209170281249ccb6d6b190901c1418f8687f5
 public class ActionsServices implements Serviceable<Actions> {
 
     private final ActionsDao actionsDao;

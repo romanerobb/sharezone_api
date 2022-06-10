@@ -1,6 +1,7 @@
 package com.revature.sharezone.userprofile;
 
 
+import com.revature.sharezone.util.web.SecureEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +63,11 @@ public class UserProfileServlet {
     @GetMapping("/data")
     public int showDataTypeInPath(@RequestParam int x){
         return x;
+    }
+
+    @SecureEndpoint(allowedUsers = {""})
+    public String secureEndpoint() {
+        return "This is from the secured endpoint";
     }
 
 

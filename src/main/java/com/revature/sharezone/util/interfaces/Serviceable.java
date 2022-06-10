@@ -8,7 +8,6 @@ public interface Serviceable<T> {
     // Create
     T create(T newObject);
 
-
     // Read
     List<T> readAll();
 

@@ -1,5 +1,7 @@
 package com.revature.sharezone.tags;
 
+import com.revature.sharezone.userprofile.UserProfile;
+
 import javax.persistence.*;
 
 // import com.revature.sharezone.user_profile.UserProfile;

@@ -1,5 +1,6 @@
 package com.revature.sharezone.tags;
 
+import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
 import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class TagsServices implements Serviceable<Tags> {
     @Override
     public Tags readById(String id) throws ResourcePersistenceException {
         Tags tags = tagsDao.findById(Integer.parseInt(id)).get();
+     return tags;
     }
 
     @Override
@@ -53,6 +55,7 @@ public class TagsServices implements Serviceable<Tags> {
 
     @Override
     public boolean validateInput(Tags newTags) {
-        if(newTags == null) return false;
+        if(newTags == null);
+        return false;
     }
 }

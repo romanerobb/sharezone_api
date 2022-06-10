@@ -1,17 +1,20 @@
 package com.revature.sharezone.userprofile;
 
-
 import com.revature.sharezone.util.exceptions.AuthenticationException;
 import com.revature.sharezone.util.exceptions.InvalidRequestException;
-import com.revature.sharezone.util.exceptions.ResourcePersistanceException;
+import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
+import com.revature.sharezone.userprofile.UserProfile;
+import com.revature.sharezone.userprofile.UserProfileDao;
+import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
-public class UserProfileServices  implements Serviceable<UserProfile>{
+public class UserProfileServices implements Serviceable<UserProfile> {
 
     private UserProfileDao userProfileDao;
 
@@ -27,7 +30,7 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
     }
 
     @Override
-    public UserProfile readById(String id) throws ResourcePersistanceException{
+    public UserProfile readById(String id) throws ResourcePersistenceException{
 
         // Add .get() after findById as it is an Optional and not just a Trainer class that is returned byt he CrudRepository
         UserProfile userProfile = userProfileDao.findById(id).get();
@@ -62,7 +65,7 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
         UserProfile persistedUserProfile = userProfileDao.save(newUserProfile);
 
         if(persistedUserProfile == null){
-            throw new ResourcePersistanceException("UserProfile was not persisted to the database upon registration");
+            throw new ResourcePersistenceException("UserProfile was not persisted to the database upon registration");
         }
         return persistedUserProfile;
     }
@@ -76,8 +79,7 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
             return false;
         if (newUserProfile.getUserpassword() == null || newUserProfile.getUserpassword().trim().equals(""))
             return false;
-        return newUserProfile.getAge() < 13;
-        return false;
+        return newUserProfile.getAge() >= 13;
 
     }
     public UserProfile authenticateUserProfile(String username, String password){
@@ -86,7 +88,7 @@ public class UserProfileServices  implements Serviceable<UserProfile>{
             throw new InvalidRequestException("Either username or password is an invalid entry. Please try logging in again");
         }
 
-        UserProfile authenticatedUserProfile = userProfileDao.authenticateUserProfile(username, password);
+        Optional<UserProfile> authenticatedUserProfile = userProfileDao.authenticateUserProfile(username, password);
 
         if (authenticatedUserProfile.isPresent()){
             throw new AuthenticationException("Unauthenticated user, information provided was not consistent with our database.");

@@ -1,5 +1,6 @@
 package com.revature.sharezone.util.interfaces;
 
+
 import java.util.List;
 
 public interface Serviceable<T> {
@@ -9,6 +10,7 @@ public interface Serviceable<T> {
 
     // Read
     List<T> readAll();
+
     T readById(String id);
 
     // Update
@@ -18,6 +20,5 @@ public interface Serviceable<T> {
     boolean delete(String id);
 
     boolean validateInput(T object);
-
-
 }
+

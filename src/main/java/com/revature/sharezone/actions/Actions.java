@@ -13,17 +13,19 @@ public class Actions {
     private int id;
     private String userstatus;
     private String usercomment;
+    private int contentsid;
     private Boolean userlike;
     private String username;
 
     public Actions() {
     }
 
-    public Actions(int id, String userstatus, String usercomment, Boolean userlike, String username) {
+    public Actions(int id, String userstatus, String usercomment, int contentsid, Boolean userlike, String username) {
         super();
         this.id = id;
         this.userstatus = userstatus;
         this.usercomment = usercomment;
+        this.contentsid = contentsid;
         this.userlike = userlike;
         this.username = username;
     }
@@ -52,6 +54,14 @@ public class Actions {
         this.usercomment = usercomment;
     }
 
+    public int getContentsid() {
+        return contentsid;
+    }
+
+    public void setContentsid(int contentsid) {
+        this.contentsid = contentsid;
+    }
+
     public Boolean getUserlike() {
         return userlike;
     }
@@ -74,6 +84,7 @@ public class Actions {
                 "id=" + id +
                 ", userstatus='" + userstatus + '\'' +
                 ", usercomment='" + usercomment + '\'' +
+                ", contentsid='" + contentsid + '\'' +
                 ", userlike=" + userlike +
                 ", username='" + username + '\'' +
                 '}';

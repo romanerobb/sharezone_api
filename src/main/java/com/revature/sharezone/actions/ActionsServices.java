@@ -1,5 +1,6 @@
 package com.revature.sharezone.actions;
 
+import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,7 @@ import java.util.List;
 @Service
 @Transactional
 
-public class ActionsServices implements Servicable<Actions> {
+public class ActionsServices implements Serviceable<Actions> {
 
     private final ActionsDao actionsDao;
 

@@ -10,7 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.websocket.server.PathParam;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -80,6 +83,21 @@ public class UserProfileServlet {
         return "Hey look at me from the secured endpoint";
     }
 
+    @PutMapping("/userprofile")
+    public ResponseEntity<UserProfile> updateUserProfile(@RequestBody UserProfile userProfile){
+        UserProfile updatedUserProfile = userProfileServices.update(userProfile);
+        return new ResponseEntity<>(updatedUserProfile, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/userprofile/{username}")
+    public Map<String, Boolean> deleteUserProfileById(@RequestParam String username) {
+        userProfileServices.delete(username);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+
+        return response;
+    }
+
 
 
 //    @PostMapping
@@ -94,7 +112,7 @@ public class UserProfileServlet {
 //        httpSession.invalidate();
 //    }
 //
-//    @PutMapping
+//
 
 
 

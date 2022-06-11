@@ -11,4 +11,5 @@ public interface UserProfileDao extends CrudRepository<UserProfile, String> {
 
     @Query(value = "FROM UserProfile WHERE username= :username AND userpassword = :userpassword")
     Optional<UserProfile> authenticateUserProfile(String username, String userpassword);
+
 }

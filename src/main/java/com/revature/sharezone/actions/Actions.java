@@ -9,9 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 
 @Entity
 @Table(name = "actions")
@@ -22,24 +19,87 @@ public class Actions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "input the user's status")
-    @NotNull
     private String userstatus;
 
-    @NotBlank(message = "input the comment")
-    @NotNull
     private String usercomment;
 
-    @NotBlank(message = "input the content id")
     @ManyToOne
     @JoinColumn(name = "contentsid", referencedColumnName = "id")
     private Contents contentid;
 
-    @NotBlank(message = "do you like?")
-    @NotNull
     private Boolean userlike;
 
     @ManyToOne
     @JoinColumn(name = "username", referencedColumnName = "username")
     private UserProfile username;
+
+
+    public Actions(int id, String userstatus, String usercomment, Contents contentid, Boolean userlike, UserProfile username) {
+        this.id = id;
+        this.userstatus = userstatus;
+        this.usercomment = usercomment;
+        this.contentid = contentid;
+        this.userlike = userlike;
+        this.username = username;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUserstatus() {
+        return userstatus;
+    }
+
+    public void setUserstatus(String userstatus) {
+        this.userstatus = userstatus;
+    }
+
+    public String getUsercomment() {
+        return usercomment;
+    }
+
+    public void setUsercomment(String usercomment) {
+        this.usercomment = usercomment;
+    }
+
+    public Contents getContentid() {
+        return contentid;
+    }
+
+    public void setContentid(Contents contentid) {
+        this.contentid = contentid;
+    }
+
+    public Boolean getUserlike() {
+        return userlike;
+    }
+
+    public void setUserlike(Boolean userlike) {
+        this.userlike = userlike;
+    }
+
+    public UserProfile getUsername() {
+        return username;
+    }
+
+    public void setUsername(UserProfile username) {
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "Actions{" +
+                "id=" + id +
+                ", userstatus='" + userstatus + '\'' +
+                ", usercomment='" + usercomment + '\'' +
+                ", contentid=" + contentid +
+                ", userlike=" + userlike +
+                ", username=" + username +
+                '}';
+    }
 }

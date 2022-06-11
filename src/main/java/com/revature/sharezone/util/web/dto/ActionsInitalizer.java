@@ -10,17 +10,17 @@ public class ActionsInitalizer {
     private int id;
     private String userstatus;
     private String usercomment;
-    private int contentid;
+    private int contentsid;
     private Boolean userlike;
     private String username;
 
     public ActionsInitalizer(){}
 
-    public ActionsInitalizer(int id, String userstatus, String usercomment, int contentid, Boolean userlike, String username) {
+    public ActionsInitalizer(int id, String userstatus, String usercomment, int contentsid, Boolean userlike, String username) {
         this.id = id;
         this.userstatus = userstatus;
         this.usercomment = usercomment;
-        this.contentid = contentid;
+        this.contentsid = contentsid;
         this.userlike = userlike;
         this.username = username;
     }
@@ -50,11 +50,11 @@ public class ActionsInitalizer {
     }
 
     public int getContentid() {
-        return contentid;
+        return contentsid;
     }
 
-    public void setContentid(int contentid) {
-        this.contentid = contentid;
+    public void setContentid(int contentsid) {
+        this.contentsid = contentsid;
     }
 
     public Boolean getUserlike() {
@@ -79,7 +79,7 @@ public class ActionsInitalizer {
                 "id=" + id +
                 ", userstatus='" + userstatus + '\'' +
                 ", usercomment='" + usercomment + '\'' +
-                ", contentid=" + contentid +
+                ", contentsid=" + contentsid +
                 ", userlike=" + userlike +
                 ", username='" + username + '\'' +
                 '}';

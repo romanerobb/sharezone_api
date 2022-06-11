@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/contents")
 public class ContentsServlet implements Authable {
     
     private final UserProfileServices userProfileServices;
@@ -36,7 +37,7 @@ public class ContentsServlet implements Authable {
         return contentsServices.readAll();
     }
 
-    @GetMapping("/contents")
+    @GetMapping()
     public ResponseEntity<List> findAllContents(){
         // ResponseEntity takes an Object for the ResponseBody and an HTTP Status Code
         return new ResponseEntity<>(contentsServices.readAll(), HttpStatus.I_AM_A_TEAPOT);

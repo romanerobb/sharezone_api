@@ -23,7 +23,7 @@ public class Actions {
 
     @ManyToOne
     @JoinColumn(name = "contentsid", referencedColumnName = "id")
-    private Contents contentid;
+    private Contents contentsid;
 
 
     private Boolean userlike;
@@ -34,15 +34,14 @@ public class Actions {
 
     public Actions() {}
 
-    public Actions(int id, String userstatus, String usercomment, Contents contentid, Boolean userlike, UserProfile username) {
+    public Actions(int id, String userstatus, String usercomment, Contents contentsid, Boolean userlike, UserProfile username) {
         this.id = id;
         this.userstatus = userstatus;
         this.usercomment = usercomment;
-        this.contentid = contentid;
+        this.contentsid = contentsid;
         this.userlike = userlike;
         this.username = username;
     }
-
 
     public int getId() {
         return id;
@@ -68,12 +67,12 @@ public class Actions {
         this.usercomment = usercomment;
     }
 
-    public Contents getContentid() {
-        return contentid;
+    public Contents getContentsid() {
+        return contentsid;
     }
 
-    public void setContentid(Contents contentid) {
-        this.contentid = contentid;
+    public void setContentsid(Contents contentsid) {
+        this.contentsid = contentsid;
     }
 
     public Boolean getUserlike() {
@@ -90,17 +89,5 @@ public class Actions {
 
     public void setUsername(UserProfile username) {
         this.username = username;
-    }
-
-    @Override
-    public String toString() {
-        return "Actions{" +
-                "id=" + id +
-                ", userstatus='" + userstatus + '\'' +
-                ", usercomment='" + usercomment + '\'' +
-                ", contentid=" + contentid +
-                ", userlike=" + userlike +
-                ", username=" + username +
-                '}';
     }
 }

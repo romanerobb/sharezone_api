@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-//@RequestMapping("/test")
+@RequestMapping("/test")
 public class TestServlet {
 
-    @GetMapping("/test")
+    @GetMapping("/1")
     public @ResponseBody String test(){
         return "Welcome to the wonderful world of Spring";
     }
 
-//    @GetMapping("/2")
-//    public @ResponseBody String test2(){
-//        return "Hey, this is another get method. nice right.";
-//    }
-//
-//    @PostMapping("/post-test")
-//    public @ResponseBody UserProfile postTest(@RequestBody UserProfile trainer){
-//        return trainer;
-//    }
-//
-//    @PostMapping("/post-pokemon")
-//    public @ResponseBody ActionsInitalizer postTestAction(@RequestBody ActionsInitalizer pokemon){
-//        return pokemon;
-//    }
+    @GetMapping("/2")
+    public @ResponseBody String test2(){
+        return "Hey, this is another get method. nice right.";
+    }
+
+    @PostMapping("/post-test")
+    public @ResponseBody String postTest(@RequestBody UserProfile userProfile){
+        return userProfile.toString();
+    }
+
+    @PostMapping("/post-actions")
+    public @ResponseBody ActionsInitalizer postTestAction(@RequestBody ActionsInitalizer actions){
+        return actions;
+    }
 //
 //    @GetMapping("/testException")
 //    public void testException(){

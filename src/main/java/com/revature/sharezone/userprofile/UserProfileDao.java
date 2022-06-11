@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface UserProfileDao extends CrudRepository<UserProfile, String> {
-    @Query(value = "FROM User WHERE username= :username AND userpassword = : userpassword")
-    Optional<UserProfile> authenticateUserProfile(String username, String password);
+    @Query(value = "FROM User WHERE username = :username AND userpassword = :userpassword")
+    Optional<UserProfile> authenticateUserProfile(String username, String userpassword);
 }

@@ -20,7 +20,6 @@ public class UserProfile {
 
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-
     private String userpassword;
 
     private int age;

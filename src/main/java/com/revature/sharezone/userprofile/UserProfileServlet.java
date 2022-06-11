@@ -1,13 +1,12 @@
 package com.revature.sharezone.userprofile;
 
-
 import com.revature.sharezone.util.web.SecureEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.AuthenticationException;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +25,7 @@ public class UserProfileServlet {
 
     // Create
     @PostMapping("/register")
-    public ResponseEntity<UserProfile> saveUserProfile(@RequestBody UserProfile userProfile){
+    public ResponseEntity<UserProfile> saveUserProfile(@RequestBody @Valid UserProfile userProfile){
         UserProfile newUserProfile = userProfileServices.create(userProfile);
         return new ResponseEntity<>(newUserProfile, HttpStatus.CREATED);
     }

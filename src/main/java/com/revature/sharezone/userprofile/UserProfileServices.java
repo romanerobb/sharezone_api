@@ -80,13 +80,13 @@ public class UserProfileServices implements Serviceable<UserProfile> {
         return newUserProfile.getAge() >= 13;
 
     }
-    public UserProfile authenticateUserProfile(String username, String password){
+    public UserProfile authenticateUserProfile(String username, String userpassword){
 
-        if(password == null || password.trim().equals("") || username == null || username.trim().equals("")) {
-            throw new InvalidRequestException("Either username or password is an invalid entry. Please try logging in again");
+        if(userpassword == null || userpassword.trim().equals("") || username == null || username.trim().equals("")) {
+            throw new InvalidRequestException("Either username or userpassword is an invalid entry. Please try logging in again");
         }
 
-        Optional<UserProfile> authenticatedUserProfile = userProfileDao.authenticateUserProfile(username, password);
+        Optional<UserProfile> authenticatedUserProfile = userProfileDao.authenticateUserProfile(username, userpassword);
 
         if (authenticatedUserProfile.isPresent()){
             throw new AuthenticationException("Unauthenticated user, information provided was not consistent with our database.");

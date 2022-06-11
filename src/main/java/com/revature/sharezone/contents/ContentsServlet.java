@@ -1,14 +1,17 @@
 package com.revature.sharezone.contents;
 
 
+import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.userprofile.UserProfileServices;
 import com.revature.sharezone.util.interfaces.Authable;
 
+import com.revature.sharezone.util.web.dto.LoginCreds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -50,18 +53,28 @@ public class ContentsServlet implements Authable {
     }
 
 
-    @GetMapping("/contents")
-    public Contents findUserProfileByIdQueryParam(@RequestParam String id){
-        Contents foundContents = contentsServices.readById(id);
-        return foundContents;
-    }
+//    @GetMapping("/contents")
+//    public Contents findUserProfileByIdQueryParam(@RequestParam String id){
+//        Contents foundContents = contentsServices.readById(id);
+//        return foundContents;
+//    }
+//
+//    @GetMapping("/data")
+//    public int showDataTypeInPath(@RequestParam int x){
+//        return x;
+//    }
 
-    @GetMapping("/data")
-    public int showDataTypeInPath(@RequestParam int x){
-        return x;
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void authorizerUser(@RequestBody LoginCreds loginCreds, HttpSession httpSession){
+//        UserProfile userProfile = userProfileServices.authenticateUserProfile(loginCreds.getUsername(), loginCreds.getUserpassword());
+//        httpSession.setAttribute("authUser", userProfile);
+//    }
+
+    @DeleteMapping
+    public void logout(HttpSession httpSession) {
+        httpSession.invalidate();
     }
-    
-    
     
     
 }

@@ -7,5 +7,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SecureEndpoint {
 
-    String[] allowedUsers();
+    String[] allowedUsers() default {};
+
+    boolean isLoggedIn() default false;
 }

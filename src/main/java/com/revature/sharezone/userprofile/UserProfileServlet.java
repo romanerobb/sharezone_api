@@ -1,13 +1,15 @@
 package com.revature.sharezone.userprofile;
 
 
+import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
 import com.revature.sharezone.util.web.SecureEndpoint;
+import com.revature.sharezone.util.web.dto.LoginCreds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.AuthenticationException;
+
 import java.util.List;
 
 @RestController
@@ -38,6 +40,7 @@ public class UserProfileServlet {
     }
 
     @GetMapping("/userprofiles")
+    @SecureEndpoint(allowedUsers = {"jluis", "jerry2022"}, isLoggedIn = true)
     public ResponseEntity<List> findAllUserProfiles(){
         // ResponseEntity takes an Object for the ResponseBody and an HTTP Status Code
         return new ResponseEntity<>(userProfileServices.readAll(), HttpStatus.I_AM_A_TEAPOT);
@@ -48,7 +51,8 @@ public class UserProfileServlet {
         throw new RuntimeException("Oh no userProfile not auth");
     }
 
-    @GetMapping("/userprofile/{email}")
+    @GetMapping("/userprofile/{username}")
+    @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<UserProfile> findUserProfileById(@PathVariable String username){
         UserProfile foundUserProfile = userProfileServices.readById(username);
         return new ResponseEntity<>(foundUserProfile, HttpStatus.OK);
@@ -65,10 +69,33 @@ public class UserProfileServlet {
         return x;
     }
 
-    @SecureEndpoint(allowedUsers = {""})
-    public String secureEndpoint() {
-        return "This is from the secured endpoint";
+    @GetMapping("/persEx")
+    public void throwPersEx(){
+        throw new ResourcePersistenceException("How does the handler know what message is being sent here???");
     }
+
+    @SecureEndpoint(allowedUsers = {"jluis", "jerry2022"}, isLoggedIn = true)
+    @GetMapping("/secEnd")
+    public String secureEndpoint(){
+        return "Hey look at me from the secured endpoint";
+    }
+
+
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void authorizerUser(@RequestBody LoginCreds loginCreds, HttpSession httpSession){
+//        UserProfile userProfile = userProfileServices.authenticateUserProfile(loginCreds.getUsername(), loginCreds.getUserpassword());
+//        httpSession.setAttribute("authUser", userProfile);
+//    }
+//
+//    @DeleteMapping
+//    public void logout(HttpSession httpSession) {
+//        httpSession.invalidate();
+//    }
+//
+//    @PutMapping
+
 
 
 

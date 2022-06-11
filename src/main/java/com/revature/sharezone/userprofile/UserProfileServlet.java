@@ -89,16 +89,6 @@ public class UserProfileServlet {
         return new ResponseEntity<>(updatedUserProfile, HttpStatus.OK);
     }
 
-//    @DeleteMapping("/userprofile/{username}")
-//    @SecureEndpoint(isLoggedIn = true)
-//    public Map<String, Boolean> deleteUserProfileById(@RequestParam String username) {
-//        userProfileServices.delete(username);
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("deleted", Boolean.TRUE);
-//
-//        return response;
-//    }
-//
     @DeleteMapping("/userprofile")
     public String deleteUserProfileById(@RequestParam String username) {
         userProfileServices.delete(username);

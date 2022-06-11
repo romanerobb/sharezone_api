@@ -1,26 +1,26 @@
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\userprofile\UserProfileServices.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\exceptions\AuthenticationException.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\SharezoneApplication.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\userprofile\UserProfileDao.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\contents\ContentsDao.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\actions\Actions.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\actions\ActionsServlet.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\actions\ActionsServices.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\interfaces\Crudable.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\contents\ContentsServices.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\actions\ActionsDao.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\exceptions\InvalidRequestException.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\contents\Contents.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\web\dto\LoginCredis.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\web\servlets\AuthServlet.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\interfaces\Authable.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\contents\ContentsServlet.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\interfaces\Serviceable.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\web\servlets\TestServlet.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\userprofile\UserProfile.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\aspects\LoggingAspect.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\userprofile\UserProfileServlet.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\exceptions\ResourcePersistenceException.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\aspects\AuthAspect.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\web\SecureEndpoint.java
-C:\Users\roman\Desktop\Revature\sharezone - p2 project\sharezone_api\src\main\java\com\revature\sharezone\util\aspects\ErrorExceptionAspect.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/exceptions/InvalidRequestException.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/web/servlets/AuthServlet.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/actions/ActionsDao.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/aspects/LoggingAspect.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/aspects/AuthAspect.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/actions/ActionsServices.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/interfaces/Serviceable.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/interfaces/Authable.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/userprofile/UserProfileServices.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/exceptions/AuthenticationException.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/actions/Actions.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/web/servlets/TestServlet.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/userprofile/UserProfileServlet.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/aspects/ErrorExceptionAspect.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/contents/ContentsServices.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/web/dto/LoginCredis.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/userprofile/UserProfile.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/contents/Contents.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/actions/ActionsServlet.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/web/SecureEndpoint.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/userprofile/UserProfileDao.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/contents/ContentsDao.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/exceptions/ResourcePersistenceException.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/util/interfaces/Crudable.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/SharezoneApplication.java
+/Users/ahdoy/Desktop/Revature/sharezone_api/src/main/java/com/revature/sharezone/contents/ContentsServlet.java

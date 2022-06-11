@@ -1,7 +1,7 @@
 package com.revature.sharezone.util.aspects;
 
 import com.revature.sharezone.userprofile.UserProfile;
-import com.revature.sharezone.util.exceptions.AuthenticationException;
+
 import com.revature.sharezone.util.web.SecureEndpoint;
 import org.apache.catalina.User;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -10,6 +10,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Method;

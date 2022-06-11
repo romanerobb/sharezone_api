@@ -6,6 +6,8 @@ import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
 import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -80,7 +82,7 @@ public class UserProfileServices implements Serviceable<UserProfile> {
         return newUserProfile.getAge() >= 13;
 
     }
-    public UserProfile authenticateUserProfile(String username, String password){
+    public UserProfile authenticateUserProfile(String username, String password) throws AuthenticationException {
 
         if(password == null || password.trim().equals("") || username == null || username.trim().equals("")) {
             throw new InvalidRequestException("Either username or password is an invalid entry. Please try logging in again");

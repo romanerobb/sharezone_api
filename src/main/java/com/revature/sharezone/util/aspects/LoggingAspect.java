@@ -42,7 +42,7 @@ public class LoggingAspect {
     public void logMethodException(JoinPoint jp, Throwable t) {
         String methodSignature = extractMethodSignature(jp);
         String throwableName = t.getClass().getName();
-        logger.info("{} was thrown in {} at {} with value: {}",
+        logger.error("{} was thrown in {} at {} with value: {}",
                 throwableName, methodSignature, LocalDateTime.now().toString(),t.getMessage() );
     }
 

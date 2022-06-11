@@ -3,8 +3,6 @@ package com.revature.sharezone.userprofile;
 import com.revature.sharezone.util.exceptions.AuthenticationException;
 import com.revature.sharezone.util.exceptions.InvalidRequestException;
 import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
-import com.revature.sharezone.userprofile.UserProfile;
-import com.revature.sharezone.userprofile.UserProfileDao;
 import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,7 +96,7 @@ public class UserProfileServices implements Serviceable<UserProfile> {
 
     }
 
-    }
+}
 
 
 

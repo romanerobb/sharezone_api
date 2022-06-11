@@ -1,110 +1,55 @@
 package com.revature.sharezone.userprofile;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name = "userprofile")
 public class UserProfile {
     @Id
     private String username;
+
+    @NotBlank(message = "input the user's first name")
+    @NotNull
     private String fname;
+
+    @NotBlank(message = "input the user's last name")
+    @NotNull
     private String lname;
 
+    @NotBlank(message = "input the user's email")
+    @NotNull
     private String emailaddress;
-    //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
+    @NotBlank(message = "input the user's password")
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Pattern(message = "Minimum eight characters, at least one letter, one number and one special character required:", regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")
     private String userpassword;
+
+    @NotBlank(message = "input the user's age")
+    @NotNull
     private int age;
+
+    @NotBlank(message = "input admin")
+    @NotNull
     private boolean is_admin;
+
+    @NotBlank(message = "input the user's subscriber")
+    @NotNull
     private boolean is_subscriber;
 
-    public UserProfile(String username, String fname, String lname, String emailaddress, String userpassword, int age, boolean is_admin, boolean is_subscriber) {
-        this.username = username;
-        this.fname = fname;
-        this.lname = lname;
-        this.emailaddress = emailaddress;
-        this.userpassword = userpassword;
-        this.age = age;
-        this.is_admin = is_admin;
-        this.is_subscriber = is_subscriber;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public String getEmailaddress() {
-        return emailaddress;
-    }
-
-    public void setEmailaddress(String emailaddress) {
-        this.emailaddress = emailaddress;
-    }
-
-    public String getUserpassword() {
-        return userpassword;
-    }
-
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public boolean isIs_admin() {
-        return is_admin;
-    }
-
-    public void setIs_admin(boolean is_admin) {
-        this.is_admin = is_admin;
-    }
-
-    public boolean isIs_subscriber() {
-        return is_subscriber;
-    }
-
-    public void setIs_subscriber(boolean is_subscriber) {
-        this.is_subscriber = is_subscriber;
-    }
-
-    @Override
-    public String toString() {
-        return "UserProfile{" +
-                "username='" + username + '\'' +
-                ", fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", emailaddress='" + emailaddress + '\'' +
-                ", userpassword='" + userpassword + '\'' +
-                ", age=" + age +
-                ", is_admin=" + is_admin +
-                ", is_subscriber=" + is_subscriber +
-                '}';
-    }
 }

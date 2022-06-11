@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public interface UserProfileDao extends CrudRepository<UserProfile, String> {
     @Query(value = "FROM User WHERE username= :username AND userpassword = : userpassword")

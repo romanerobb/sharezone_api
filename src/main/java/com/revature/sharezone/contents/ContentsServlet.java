@@ -47,7 +47,7 @@ public class ContentsServlet implements Authable {
 //    public void userProfileEx(){
 //        throw new RuntimeException("Oh no userProfile not auth");
 //    }
-    @GetMapping("/contents/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Contents> findUserProfileById(@PathVariable String id){
         Contents tags = contentsServices.readById(id);
         return new ResponseEntity<>(tags, HttpStatus.OK);

@@ -39,29 +39,19 @@ public class ContentsServlet implements Authable {
 
     // TODO: IMPLEMENT ME
 
+
+
+    // TODO: change this one for logging already
+
+
     @GetMapping()
     public List<Contents> findAllContents(){
         return contentsServices.readAll();
     }
 
-//    @GetMapping()
-//    public ResponseEntity<List> findAllContents(){
-//        // ResponseEntity takes an Object for the ResponseBody and an HTTP Status Code
-//        return new ResponseEntity<>(contentsServices.readAll(), HttpStatus.I_AM_A_TEAPOT);
-//    }
-    // TODO: change this one for logging already
-//    @GetMapping("/UserProfileEx")
-//    public void userProfileEx(){
-//        throw new RuntimeException("Oh no userProfile not auth");
-//    }
-//    @GetMapping("/contents/{id}")
-//    public ResponseEntity<Contents> findContentsById(@RequestParam String id){
-//        Contents contents = contentsServices.readById(id);
-//        return new ResponseEntity<>(contents, HttpStatus.OK);
-//    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Contents> findContentsById(@PathVariable String id){
+    @GetMapping("/findById")
+    public ResponseEntity<Contents> findContentsById(@RequestParam String id){
         Contents contents = contentsServices.readById(id);
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }

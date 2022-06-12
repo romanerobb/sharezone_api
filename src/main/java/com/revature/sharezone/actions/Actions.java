@@ -1,27 +1,40 @@
 package com.revature.sharezone.actions;
 
+import com.revature.sharezone.contents.Contents;
+import com.revature.sharezone.userprofile.UserProfile;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "actions")
-
 public class Actions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
+
     private String userstatus;
+
     private String usercomment;
-    private int contentsid;
+
+
+    @ManyToOne
+    @JoinColumn(name = "contentsid", referencedColumnName = "id")
+    private Contents contentsid;
+
+
     private Boolean userlike;
-    private String username;
 
-    public Actions() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private UserProfile username;
 
-    public Actions(int id, String userstatus, String usercomment, int contentsid, Boolean userlike, String username) {
-        super();
+    public Actions() {}
+
+    public Actions(int id, String userstatus, String usercomment, Contents contentsid, Boolean userlike, UserProfile username) {
         this.id = id;
         this.userstatus = userstatus;
         this.usercomment = usercomment;
@@ -34,7 +47,7 @@ public class Actions {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -54,11 +67,11 @@ public class Actions {
         this.usercomment = usercomment;
     }
 
-    public int getContentsid() {
+    public Contents getContentsid() {
         return contentsid;
     }
 
-    public void setContentsid(int contentsid) {
+    public void setContentsid(Contents contentsid) {
         this.contentsid = contentsid;
     }
 
@@ -70,23 +83,11 @@ public class Actions {
         this.userlike = userlike;
     }
 
-    public String getUsername() {
+    public UserProfile getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(UserProfile username) {
         this.username = username;
-    }
-
-    @Override
-    public String toString() {
-        return "Actions{" +
-                "id=" + id +
-                ", userstatus='" + userstatus + '\'' +
-                ", usercomment='" + usercomment + '\'' +
-                ", contentsid='" + contentsid + '\'' +
-                ", userlike=" + userlike +
-                ", username='" + username + '\'' +
-                '}';
     }
 }

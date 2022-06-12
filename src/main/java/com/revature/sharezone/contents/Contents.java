@@ -2,28 +2,38 @@ package com.revature.sharezone.contents;
 
 
 import com.revature.sharezone.userprofile.UserProfile;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+
+
 
 @Entity
 @Table(name = "contents")
 public class Contents {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private int id;
 
+
     private String section;
+
+
     private String postcontent;
+
     private String displaypicture;
+
+
     private String postdate;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="username",  referencedColumnName="username")
     private UserProfile username;
 
     public Contents() {}
-
     public Contents(int id, String section, String postcontent, String displaypicture, String postdate, UserProfile username) {
         this.id = id;
         this.section = section;

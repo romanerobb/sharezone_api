@@ -33,9 +33,8 @@ public class LoggingAspect {
     }
 
     @AfterReturning(pointcut = "logAll()", returning = "returnedObject")
-    public void logMethodReturn(JoinPoint jp, Object returnObject) {
-        logger.info("{} was successfully returned at {} with value: {}",
-                extractMethodSignature(jp), LocalDateTime.now().toString(), returnObject);
+    public void logMethodReturn(JoinPoint jp, Object returnedObject){
+        logger.info("{} successfully returned at {} with value: {}", extractMethodSignature(jp), LocalDateTime.now().toString(), returnedObject);
     }
 
     @AfterThrowing(pointcut = "logAll()", throwing = "t")

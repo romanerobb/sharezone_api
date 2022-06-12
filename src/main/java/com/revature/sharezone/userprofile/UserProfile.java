@@ -1,24 +1,39 @@
 package com.revature.sharezone.userprofile;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+
+
 
 @Entity
 @Table(name = "userprofile")
 public class UserProfile {
     @Id
     private String username;
+
+
     private String fname;
+
+
     private String lname;
 
-    private String emailaddress;
-    //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String userpassword;
-    private int age;
-    private boolean is_admin;
-    private boolean is_subscriber;
 
+    private String emailaddress;
+
+
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String userpassword;
+
+
+    private int age;
+
+
+    private boolean is_admin;
+
+
+    private boolean is_subscriber;
+    public UserProfile() {}
     public UserProfile(String username, String fname, String lname, String emailaddress, String userpassword, int age, boolean is_admin, boolean is_subscriber) {
         this.username = username;
         this.fname = fname;

@@ -9,23 +9,17 @@ server:
 spring:
   application:
     name: sharezone
+
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-<<<<<<< HEAD
     url: jdbc:sqlserver://;serverName=sharezone.database.windows.net;databaseName=sharezonedb;encrypt=true
-#    url: jdbc:sqlserver://sharezone.database.windows.net:1433;database=sharezonedb;user=sharezone@sharezone;password=Socialmedia2022;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-=======
-#    url: jdbc:sqlserver://;serverName=syntaxerrorjars-example.database.windows.net;databaseName=SyntaxErrorJarsDB;encrypt=true
-    url: jdbc:sqlserver://sharezone.database.windows.net:1433;database=sharezonedb;user=sharezone@sharezone;password=Socialmedia2022;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
->>>>>>> cb8209170281249ccb6d6b190901c1418f8687f5
     username: sharezone
     password: Socialmedia2022
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true
     hibernate:
-      ddl-auto: create
-
+      ddl-auto: update
 
 # Default actuator gives us the health endpoint, we will add a few others
 management:

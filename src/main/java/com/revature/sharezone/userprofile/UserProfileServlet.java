@@ -1,13 +1,19 @@
 package com.revature.sharezone.userprofile;
 
 
+import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
+import com.revature.sharezone.util.web.SecureEndpoint;
+import com.revature.sharezone.util.web.dto.LoginCreds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.AuthenticationException;
+
+import javax.websocket.server.PathParam;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -37,6 +43,7 @@ public class UserProfileServlet {
     }
 
     @GetMapping("/userprofiles")
+    @SecureEndpoint(allowedUsers = {"jluis", "jerry2022"}, isLoggedIn = true)
     public ResponseEntity<List> findAllUserProfiles(){
         // ResponseEntity takes an Object for the ResponseBody and an HTTP Status Code
         return new ResponseEntity<>(userProfileServices.readAll(), HttpStatus.I_AM_A_TEAPOT);
@@ -47,7 +54,8 @@ public class UserProfileServlet {
         throw new RuntimeException("Oh no userProfile not auth");
     }
 
-    @GetMapping("/userprofile/{email}")
+    @GetMapping("/userprofile/{username}")
+    @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<UserProfile> findUserProfileById(@PathVariable String username){
         UserProfile foundUserProfile = userProfileServices.readById(username);
         return new ResponseEntity<>(foundUserProfile, HttpStatus.OK);
@@ -64,6 +72,28 @@ public class UserProfileServlet {
         return x;
     }
 
+    @GetMapping("/persEx")
+    public void throwPersEx(){
+        throw new ResourcePersistenceException("How does the handler know what message is being sent here???");
+    }
 
+    @SecureEndpoint(allowedUsers = {"jluis", "jerry2022"}, isLoggedIn = true)
+    @GetMapping("/secEnd")
+    public String secureEndpoint(){
+        return "Hey look at me from the secured endpoint";
+    }
+
+    @PutMapping("/userprofile")
+    public ResponseEntity<UserProfile> updateUserProfile(@RequestBody UserProfile userProfile){
+        UserProfile updatedUserProfile = userProfileServices.update(userProfile);
+        return new ResponseEntity<>(updatedUserProfile, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/userprofile")
+    public String deleteUserProfileById(@RequestParam String username) {
+        if(userProfileServices.delete(username))
+            return "delete the userprofile by : " + username + " working";
+        else return "failed to delete content :" + username;
+    }
 
 }

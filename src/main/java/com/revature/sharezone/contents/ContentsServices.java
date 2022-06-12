@@ -2,12 +2,15 @@ package com.revature.sharezone.contents;
 
 import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.userprofile.UserProfileDao;
+import com.revature.sharezone.util.exceptions.AuthenticationException;
+import com.revature.sharezone.util.exceptions.InvalidRequestException;
 import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -55,5 +58,17 @@ public class ContentsServices implements Serviceable<Contents> {
         if(contents.getSection() == null || contents.getSection().trim().equals("") ) return false;
         if(contents.getPostdate() == null || contents.getPostdate().trim().equals("")) return false;
         return true;
+    }
+
+    public List<Contents> selectAllContentsBySection(String section){
+
+        if(section == null || section.trim().equals("")) {
+            throw new InvalidRequestException("section is an invalid entry. Please select the section you want to read.");
+        }
+
+        List<Contents> contentsListBySection = (List<Contents>) contentsDao.selectAllContentsBySection(section);
+
+        return contentsListBySection;
+
     }
 }

@@ -91,28 +91,9 @@ public class UserProfileServlet {
 
     @DeleteMapping("/userprofile")
     public String deleteUserProfileById(@RequestParam String username) {
-        userProfileServices.delete(username);
-        return "delete working";
+        if(userProfileServices.delete(username))
+            return "delete the userprofile by : " + username + " working";
+        else return "failed to delete content :" + username;
     }
-
-
-
-
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void authorizerUser(@RequestBody LoginCreds loginCreds, HttpSession httpSession){
-//        UserProfile userProfile = userProfileServices.authenticateUserProfile(loginCreds.getUsername(), loginCreds.getUserpassword());
-//        httpSession.setAttribute("authUser", userProfile);
-//    }
-//
-//    @DeleteMapping
-//    public void logout(HttpSession httpSession) {
-//        httpSession.invalidate();
-//    }
-//
-//
-
-
-
 
 }

@@ -70,8 +70,9 @@ public class ContentsServlet implements Authable {
 
     @DeleteMapping()
     public String deleteContentsById(@RequestParam String id) {
-        contentsServices.delete(id);
-        return "delete content : " + id + " working";
+        if(contentsServices.delete(id))
+            return "delete content : " + id + " working";
+        else return "failed to delete content :" + id;
     }
 
 

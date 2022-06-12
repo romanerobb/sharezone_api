@@ -61,8 +61,9 @@ public class ActionsServlet {
 
     @DeleteMapping()
     public String deleteActionsById(@RequestParam String id) {
-        actionsServices.delete(id);
-        return "delete content : " + id + " working";
+        if(actionsServices.delete(id))
+            return "delete content : " + id + " working";
+        else return "failed to delete content :" + id;
     }
 
 

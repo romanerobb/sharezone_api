@@ -1,6 +1,7 @@
 package com.revature.sharezone.actions;
 
 
+import com.revature.sharezone.contents.Contents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,11 @@ public class ActionsServlet {
     public ResponseEntity<Actions> findActionsById(@RequestParam String id){
         Actions actions = actionsServices.readById(id);
         return new ResponseEntity<>(actions, HttpStatus.OK);
+    }
+
+    @GetMapping("/findAllByContentsid")
+    public List<Actions> findAllContentsBySection(@RequestParam String contentsid){
+        return actionsServices.selectAllActionsByContentsId(contentsid);
     }
 
     @PostMapping()

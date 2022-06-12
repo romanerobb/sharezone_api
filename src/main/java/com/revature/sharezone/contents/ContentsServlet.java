@@ -56,6 +56,11 @@ public class ContentsServlet implements Authable {
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
 
+    @GetMapping("/findAllBySection")
+    public List<Contents> findAllContentsBySection(@RequestParam String section){
+        return contentsServices.selectAllContentsBySection(section);
+    }
+
     @PostMapping()
     public ResponseEntity<Contents> saveUserProfile(@RequestBody Contents contents){
         Contents newContents = contentsServices.create(contents);

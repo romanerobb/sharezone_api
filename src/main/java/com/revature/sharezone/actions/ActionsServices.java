@@ -50,7 +50,8 @@ public class ActionsServices implements Serviceable<Actions> {
 
     @Override
     public boolean delete (String id) {
-        return false;
+        actionsDao.deleteById(Integer.parseInt(id));
+        return true;
     }
 
     @Override

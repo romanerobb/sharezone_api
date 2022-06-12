@@ -19,7 +19,7 @@ spring:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 
 # Default actuator gives us the health endpoint, we will add a few others

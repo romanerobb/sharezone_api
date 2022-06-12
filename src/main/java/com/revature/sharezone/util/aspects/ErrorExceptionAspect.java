@@ -1,6 +1,3 @@
-// TODO
-
-
 package com.revature.sharezone.util.aspects;
 
 import com.revature.sharezone.util.exceptions.AuthenticationException;
@@ -46,7 +43,7 @@ public class ErrorExceptionAspect {
     }
 
     @ExceptionHandler({ConstraintViolationException.class})
-    public ResponseEntity<String> validationExeption(Exception e) {
+    public ResponseEntity<String> validationException(Exception e) {
         String message = "Caught the invalid request3 with :" + e.getMessage();
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }

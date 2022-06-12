@@ -21,4 +21,3 @@ public interface Serviceable<T> {
 
     boolean validateInput(T object);
 }
-

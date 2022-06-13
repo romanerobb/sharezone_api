@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.validation.ConstraintViolationException;
 import java.io.IOException;
 
+// Because this aspect is so common , leveraging this to a @RestControllerAdvice , would be great idea.
 @RestControllerAdvice
 public class ErrorExceptionAspect {
 

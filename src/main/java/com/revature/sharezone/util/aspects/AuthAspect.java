@@ -39,7 +39,7 @@ public class AuthAspect {
 
         UserProfile userProfile = (UserProfile) httpSession.getAttribute("authUser");
         if(!allowedUsers.contains(userProfile.getUsername()))
-            throw new AuthenticationException("Forbiden User");
+            throw new AuthenticationException("Forbidden User");
 
         Object returned = pjp.proceed();
 

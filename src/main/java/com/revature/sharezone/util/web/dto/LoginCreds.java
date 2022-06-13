@@ -31,4 +31,12 @@ public class LoginCreds {
     public void setUserpassword(String userpassword) {
         this.userpassword = userpassword;
     }
+
+    @Override
+    public String toString() {
+        return "LoginCreds{" +
+                "username='" + username + '\'' +
+                ", userpassword='" + userpassword + '\'' +
+                '}';
+    }
 }

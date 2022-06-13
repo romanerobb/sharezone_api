@@ -50,6 +50,7 @@ public class ContentsServlet implements Authable {
     }
 
 
+    // ResponseEntity returns Object + HttpStatus
     @GetMapping("/findById")
     public ResponseEntity<Contents> findContentsById(@RequestParam String id){
         Contents contents = contentsServices.readById(id);

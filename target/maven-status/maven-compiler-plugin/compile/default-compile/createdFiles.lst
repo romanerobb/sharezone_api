@@ -1,3 +1,4 @@
+com\revature\sharezone\Controller.class
 com\revature\sharezone\userprofile\UserProfileServices.class
 com\revature\sharezone\userprofile\UserProfile.class
 com\revature\sharezone\userprofile\UserProfileServlet.class
@@ -24,4 +25,5 @@ com\revature\sharezone\util\exceptions\AuthenticationException.class
 com\revature\sharezone\contents\ContentsServlet.class
 com\revature\sharezone\util\web\dto\ContentsInitializer.class
 com\revature\sharezone\contents\ContentsDao.class
+com\revature\sharezone\util\AppConfig.class
 com\revature\sharezone\util\exceptions\InvalidRequestException.class

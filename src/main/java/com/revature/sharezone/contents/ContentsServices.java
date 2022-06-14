@@ -1,10 +1,14 @@
 package com.revature.sharezone.contents;
 
+import com.revature.sharezone.actions.Actions;
 import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.userprofile.UserProfileDao;
 import com.revature.sharezone.util.exceptions.AuthenticationException;
 import com.revature.sharezone.util.exceptions.InvalidRequestException;
 import com.revature.sharezone.util.interfaces.Serviceable;
+import com.revature.sharezone.util.web.dto.ActionsInitalizer;
+import com.revature.sharezone.util.web.dto.ContentsInitializer;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +35,20 @@ public class ContentsServices implements Serviceable<Contents> {
         return contentsDao.save(newContents);
     }
 
+
+    public Contents create (ContentsInitializer contentsInitializer) {
+        Contents newContents = new Contents();
+        UserProfile userProfile = userProfileDao.findById(contentsInitializer.getUsername()).get();
+
+        newContents.setDisplaypicture(contentsInitializer.getDisplaypicture());
+        newContents.setPostcontent(contentsInitializer.getPostcontent());
+        newContents.setSection(contentsInitializer.getSection());
+        newContents.setPostdate(contentsInitializer.getPostdate());
+        newContents.setUsername(userProfile);
+
+        return contentsDao.save(newContents);
+    }
+
     @Override
     public List<Contents> readAll() {
         return (List<Contents>) contentsDao.findAll();
@@ -44,6 +62,20 @@ public class ContentsServices implements Serviceable<Contents> {
     @Override
     public Contents update(Contents updateContent) {
         return contentsDao.save(updateContent);
+    }
+
+    public Contents update (@NotNull ContentsInitializer contentsInitializer) {
+
+        Contents updatedContents = new Contents();
+        UserProfile userProfile = userProfileDao.findById(contentsInitializer.getUsername()).get();
+
+        updatedContents.setDisplaypicture(contentsInitializer.getDisplaypicture());
+        updatedContents.setPostcontent(contentsInitializer.getPostcontent());
+        updatedContents.setSection(contentsInitializer.getSection());
+        updatedContents.setPostdate(contentsInitializer.getPostdate());
+        updatedContents.setUsername(userProfile);
+
+        return contentsDao.save(updatedContents);
     }
 
     @Override

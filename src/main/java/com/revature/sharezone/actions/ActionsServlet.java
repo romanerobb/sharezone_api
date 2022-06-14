@@ -2,6 +2,8 @@ package com.revature.sharezone.actions;
 
 
 import com.revature.sharezone.contents.Contents;
+import com.revature.sharezone.userprofile.UserProfile;
+import com.revature.sharezone.util.web.dto.ActionsInitalizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,9 +54,14 @@ public class ActionsServlet {
         return actionsServices.selectAllActionsByContentsId(contentsid);
     }
 
+//  @PostMapping()
+//    public ResponseEntity<Actions> saveUserProfile(@RequestBody Actions actions){
+//        Actions newActions = actionsServices.create(actions);
+//        return new ResponseEntity<>(newActions, HttpStatus.CREATED);
+//   }
     @PostMapping()
-    public ResponseEntity<Actions> saveUserProfile(@RequestBody Actions actions){
-        Actions newActions = actionsServices.create(actions);
+    public ResponseEntity<Actions> saveActions(@RequestBody ActionsInitalizer actionsInitalizer){
+        Actions newActions = actionsServices.create(actionsInitalizer);
         return new ResponseEntity<>(newActions, HttpStatus.CREATED);
     }
 
@@ -67,9 +74,15 @@ public class ActionsServlet {
     }
 
 
+//    @PutMapping()
+//    public ResponseEntity<Actions> updateActions(@RequestBody Actions actions){
+//        Actions updatedActions = actionsServices.update(actions);
+//        return new ResponseEntity<>(updatedActions, HttpStatus.OK);
+//    }
+
     @PutMapping()
-    public ResponseEntity<Actions> updateContent(@RequestBody Actions actions){
-        Actions updatedActions = actionsServices.update(actions);
+    public ResponseEntity<Actions> updateActions(@RequestBody ActionsInitalizer actionsInitalizer){
+        Actions updatedActions = actionsServices.update(actionsInitalizer);
         return new ResponseEntity<>(updatedActions, HttpStatus.OK);
     }
 

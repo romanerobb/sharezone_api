@@ -2,13 +2,20 @@ package com.revature.sharezone.actions;
 
 import com.revature.sharezone.contents.Contents;
 import com.revature.sharezone.contents.ContentsDao;
+import com.revature.sharezone.userprofile.UserProfile;
+import com.revature.sharezone.userprofile.UserProfileDao;
 import com.revature.sharezone.util.exceptions.InvalidRequestException;
 import com.revature.sharezone.util.interfaces.Serviceable;
+import com.revature.sharezone.util.web.dto.ActionsInitalizer;
+import org.apache.catalina.User;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
@@ -19,17 +26,33 @@ public class ActionsServices implements Serviceable<Actions> {
     private final ActionsDao actionsDao;
     private final ContentsDao contentsDao;
 
+    private final UserProfileDao userProfileDao;
+
+
     @Autowired
-    public ActionsServices(ActionsDao actionsDao, ContentsDao contentsDao) {
+    public ActionsServices(ActionsDao actionsDao, ContentsDao contentsDao, UserProfileDao userProfileDao) {
         this.actionsDao = actionsDao;
         this.contentsDao = contentsDao;
+        this.userProfileDao = userProfileDao;
     }
-
-
-
 
     @Override
     public Actions create (Actions newActions) {
+        return actionsDao.save(newActions);
+    }
+
+    public Actions create (ActionsInitalizer actionsInitalizer) {
+        Actions newActions = new Actions();
+        UserProfile userProfile = userProfileDao.findById(actionsInitalizer.getUsername()).get();
+        Contents contents = contentsDao.findById(actionsInitalizer.getContentid()).get();
+
+        newActions.setContentsid(contents);
+        newActions.setUsername(userProfile);
+        newActions.setUsercomment(actionsInitalizer.getUsercomment());
+        newActions.setUserlike(actionsInitalizer.getUserlike());
+        newActions.setUsercomment(actionsInitalizer.getUsercomment());
+        newActions.setUserstatus(actionsInitalizer.getUserstatus());
+
         return actionsDao.save(newActions);
     }
 
@@ -46,6 +69,22 @@ public class ActionsServices implements Serviceable<Actions> {
     @Override
     public Actions update (Actions updatedActions) {
         return actionsDao.save(updatedActions);
+    }
+
+    public Actions update (@NotNull ActionsInitalizer actionsInitalizer) {
+
+        Actions updatedActions = new Actions();
+        UserProfile userProfile = userProfileDao.findById(actionsInitalizer.getUsername()).get();
+        Contents contents = contentsDao.findById(actionsInitalizer.getContentid()).get();
+
+        updatedActions.setUsername(userProfile);
+        updatedActions.setContentsid(contents);
+        updatedActions.setUsercomment(actionsInitalizer.getUsercomment());
+        updatedActions.setUserlike(actionsInitalizer.getUserlike());
+        updatedActions.setUsercomment(actionsInitalizer.getUsercomment());
+        updatedActions.setUserstatus(actionsInitalizer.getUserstatus());
+
+         return actionsDao.save(updatedActions);
     }
 
     @Override

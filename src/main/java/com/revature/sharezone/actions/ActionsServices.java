@@ -5,6 +5,7 @@ import com.revature.sharezone.contents.ContentsDao;
 import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.userprofile.UserProfileDao;
 import com.revature.sharezone.util.exceptions.InvalidRequestException;
+import com.revature.sharezone.util.exceptions.ResourcePersistenceException;
 import com.revature.sharezone.util.interfaces.Serviceable;
 import com.revature.sharezone.util.web.dto.ActionsInitalizer;
 import org.apache.catalina.User;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -63,7 +65,12 @@ public class ActionsServices implements Serviceable<Actions> {
 
     @Override
     public Actions readById (String id) {
-        return actionsDao.findById(Integer.parseInt(id)).get();
+        Optional<Actions> optionalActions = actionsDao.findById(Integer.parseInt(id));
+
+        if (!optionalActions.isPresent()){
+            throw new ResourcePersistenceException("the action id: " + id + " is not present.");
+        }
+        return optionalActions.get();
     }
 
     @Override

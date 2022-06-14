@@ -6,6 +6,7 @@ import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.userprofile.UserProfileServices;
 import com.revature.sharezone.util.interfaces.Authable;
 
+import com.revature.sharezone.util.web.SecureEndpoint;
 import com.revature.sharezone.util.web.dto.ActionsInitalizer;
 import com.revature.sharezone.util.web.dto.ContentsInitializer;
 import com.revature.sharezone.util.web.dto.LoginCreds;
@@ -47,6 +48,7 @@ public class ContentsServlet implements Authable {
 
 
     @GetMapping()
+    @SecureEndpoint(isLoggedIn = true)
     public List<Contents> findAllContents(){
         return contentsServices.readAll();
     }
@@ -54,12 +56,14 @@ public class ContentsServlet implements Authable {
 
     // ResponseEntity returns Object + HttpStatus
     @GetMapping("/findById")
+    @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<Contents> findContentsById(@RequestParam String id){
         Contents contents = contentsServices.readById(id);
         return new ResponseEntity<>(contents, HttpStatus.OK);
     }
 
     @GetMapping("/findAllBySection")
+    @SecureEndpoint(isLoggedIn = true)
     public List<Contents> findAllContentsBySection(@RequestParam String section){
         return contentsServices.selectAllContentsBySection(section);
     }
@@ -71,6 +75,7 @@ public class ContentsServlet implements Authable {
 //    }
 
     @PostMapping()
+    @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<Contents> saveContents(@RequestBody ContentsInitializer contentsInitializer){
         Contents newContents = contentsServices.create(contentsInitializer);
         return new ResponseEntity<>(newContents, HttpStatus.CREATED);
@@ -78,6 +83,7 @@ public class ContentsServlet implements Authable {
 
 
     @DeleteMapping()
+    @SecureEndpoint(isLoggedIn = true)
     public String deleteContentsById(@RequestParam String id) {
         if(contentsServices.delete(id))
             return "delete content : " + id + " working";
@@ -92,6 +98,7 @@ public class ContentsServlet implements Authable {
 //    }
 
     @PutMapping()
+    @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<Contents> updateContent(@RequestBody ContentsInitializer contentsInitializer){
         Contents updatedContents = contentsServices.update(contentsInitializer);
         return new ResponseEntity<>(updatedContents, HttpStatus.OK);

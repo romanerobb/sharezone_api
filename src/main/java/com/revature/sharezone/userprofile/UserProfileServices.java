@@ -85,7 +85,6 @@ public class UserProfileServices implements Serviceable<UserProfile> {
         if(userpassword == null || userpassword.trim().equals("") || username == null || username.trim().equals("")) {
             throw new InvalidRequestException("Either username or userpassword is an invalid entry. Please try logging in again");
         }
-System.out.println("username:" + username + "  userpassword: " + userpassword);
         Optional<UserProfile> authenticatedUserProfile = userProfileDao.authenticateUserProfile(username, userpassword);
 
         if (!authenticatedUserProfile.isPresent()){

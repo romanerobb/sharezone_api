@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity
@@ -41,6 +42,19 @@ public class Actions {
         this.contentsid = contentsid;
         this.userlike = userlike;
         this.username = username;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Actions)) return false;
+        Actions actions = (Actions) o;
+        return getId() == actions.getId() && Objects.equals(getUserstatus(), actions.getUserstatus()) && Objects.equals(getUsercomment(), actions.getUsercomment()) && Objects.equals(getContentsid(), actions.getContentsid()) && Objects.equals(getUserlike(), actions.getUserlike()) && Objects.equals(getUsername(), actions.getUsername());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getUserstatus(), getUsercomment(), getContentsid(), getUserlike(), getUsername());
     }
 
     public int getId() {

@@ -7,8 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-
+import java.util.Objects;
 
 
 @Entity
@@ -41,6 +40,19 @@ public class Contents {
         this.displaypicture = displaypicture;
         this.postdate = postdate;
         this.username = username;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Contents)) return false;
+        Contents contents = (Contents) o;
+        return getId() == contents.getId() && Objects.equals(getSection(), contents.getSection()) && Objects.equals(getPostcontent(), contents.getPostcontent()) && Objects.equals(getDisplaypicture(), contents.getDisplaypicture()) && Objects.equals(getPostdate(), contents.getPostdate()) && Objects.equals(getUsername(), contents.getUsername());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getSection(), getPostcontent(), getDisplaypicture(), getPostdate(), getUsername());
     }
 
     public int getId() {

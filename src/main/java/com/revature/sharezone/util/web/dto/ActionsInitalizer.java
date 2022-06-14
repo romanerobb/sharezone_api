@@ -49,11 +49,11 @@ public class ActionsInitalizer {
         this.usercomment = usercomment;
     }
 
-    public int getContentid() {
+    public int getContentsid() {
         return contentsid;
     }
 
-    public void setContentid(int contentsid) {
+    public void setContentsid(int contentsid) {
         this.contentsid = contentsid;
     }
 

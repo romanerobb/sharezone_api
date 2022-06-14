@@ -1,10 +1,13 @@
 package com.revature.sharezone.contents;
 
 
+import com.revature.sharezone.actions.Actions;
 import com.revature.sharezone.userprofile.UserProfile;
 import com.revature.sharezone.userprofile.UserProfileServices;
 import com.revature.sharezone.util.interfaces.Authable;
 
+import com.revature.sharezone.util.web.SecureEndpoint;
+import com.revature.sharezone.util.web.dto.ActionsInitalizer;
 import com.revature.sharezone.util.web.dto.ContentsInitializer;
 import com.revature.sharezone.util.web.dto.LoginCreds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +65,15 @@ public class ContentsServlet implements Authable {
         return contentsServices.selectAllContentsBySection(section);
     }
 
+//    @PostMapping()
+//    public ResponseEntity<Contents> saveContents(@RequestBody Contents contents){
+//        Contents newContents = contentsServices.create(contents);
+//        return new ResponseEntity<>(newContents, HttpStatus.CREATED);
+//    }
+
     @PostMapping()
-    public ResponseEntity<Contents> saveUserProfile(@RequestBody Contents contents){
-        Contents newContents = contentsServices.create(contents);
+    public ResponseEntity<Contents> saveContents(@RequestBody ContentsInitializer contentsInitializer){
+        Contents newContents = contentsServices.create(contentsInitializer);
         return new ResponseEntity<>(newContents, HttpStatus.CREATED);
     }
 
@@ -77,11 +86,18 @@ public class ContentsServlet implements Authable {
     }
 
 
+//    @PutMapping()
+//    public ResponseEntity<Contents> updateContent(@RequestBody Contents contents){
+//        Contents updatedContents = contentsServices.update(contents);
+//        return new ResponseEntity<>(updatedContents, HttpStatus.OK);
+//    }
+
     @PutMapping()
-    public ResponseEntity<Contents> updateContent(@RequestBody Contents contents){
-        Contents updatedContents = contentsServices.update(contents);
+    public ResponseEntity<Contents> updateContent(@RequestBody ContentsInitializer contentsInitializer){
+        Contents updatedContents = contentsServices.update(contentsInitializer);
         return new ResponseEntity<>(updatedContents, HttpStatus.OK);
     }
-    
-    
+
+
+
 }

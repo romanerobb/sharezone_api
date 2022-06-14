@@ -14,11 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.reflect.annotation.ExceptionProxy;
 
 
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -45,8 +47,9 @@ public class ActionsServices implements Serviceable<Actions> {
 
     public Actions create (ActionsInitalizer actionsInitalizer) {
         Actions newActions = new Actions();
+
         UserProfile userProfile = userProfileDao.findById(actionsInitalizer.getUsername()).get();
-        Contents contents = contentsDao.findById(actionsInitalizer.getContentid()).get();
+        Contents contents = contentsDao.findById(actionsInitalizer.getContentsid()).get();
 
         newActions.setContentsid(contents);
         newActions.setUsername(userProfile);
@@ -78,12 +81,13 @@ public class ActionsServices implements Serviceable<Actions> {
         return actionsDao.save(updatedActions);
     }
 
-    public Actions update (@NotNull ActionsInitalizer actionsInitalizer) {
+    public Actions update (ActionsInitalizer actionsInitalizer) {
 
         Actions updatedActions = new Actions();
         UserProfile userProfile = userProfileDao.findById(actionsInitalizer.getUsername()).get();
-        Contents contents = contentsDao.findById(actionsInitalizer.getContentid()).get();
+        Contents contents = contentsDao.findById(actionsInitalizer.getContentsid()).get();
 
+        updatedActions.setId(actionsInitalizer.getId());
         updatedActions.setUsername(userProfile);
         updatedActions.setContentsid(contents);
         updatedActions.setUsercomment(actionsInitalizer.getUsercomment());

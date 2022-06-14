@@ -77,6 +77,7 @@ public class ContentsServices implements Serviceable<Contents> {
         Contents updatedContents = new Contents();
         UserProfile userProfile = userProfileDao.findById(contentsInitializer.getUsername()).get();
 
+        updatedContents.setId(contentsInitializer.getId());
         updatedContents.setDisplaypicture(contentsInitializer.getDisplaypicture());
         updatedContents.setPostcontent(contentsInitializer.getPostcontent());
         updatedContents.setSection(contentsInitializer.getSection());

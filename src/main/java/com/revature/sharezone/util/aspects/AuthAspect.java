@@ -31,6 +31,7 @@ public class AuthAspect {
     }
 
     // ProceedingJoinEndPoint is looking for any annotations from the above of the method signature
+    // We want to do this anything has the SecureEndpoint annotation
 
     @Around("@annotation(com.revature.sharezone.util.web.SecureEndpoint)")
     public Object secureEndpoints(ProceedingJoinPoint pjp) throws Throwable {
@@ -51,7 +52,7 @@ public class AuthAspect {
         if(!allowedUsers.contains(userProfile.getUsername()))
             throw new AuthenticationException("Forbidden request mde to sensitive endpoint by user" + userProfile.getUsername());
 
-
+        // This continues to execute the method in question ( method below the @SecureEndpoint annotation)
         Object returned = pjp.proceed();
 
         return returned;

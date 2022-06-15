@@ -16,7 +16,6 @@ spring:
     username: sharezone
     password: Socialmedia2022
 
-
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true

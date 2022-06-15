@@ -72,6 +72,7 @@ public class ContentsServlet implements Authable {
 //    }
 
     @PostMapping()
+    @SecureEndpoint(needAdminLoggin = true)
     public ResponseEntity<Contents> saveContents(@RequestBody ContentsInitializer contentsInitializer){
         Contents newContents = contentsServices.create(contentsInitializer);
         return new ResponseEntity<>(newContents, HttpStatus.CREATED);
@@ -79,6 +80,7 @@ public class ContentsServlet implements Authable {
 
 
     @DeleteMapping()
+    @SecureEndpoint(needAdminLoggin = true)
     public String deleteContentsById(@RequestParam String id) {
         if(contentsServices.delete(id))
             return "delete content : " + id + " working";
@@ -93,6 +95,7 @@ public class ContentsServlet implements Authable {
 //    }
 
     @PutMapping()
+    @SecureEndpoint(needAdminLoggin = true)
     public ResponseEntity<Contents> updateContent(@RequestBody ContentsInitializer contentsInitializer){
         Contents updatedContents = contentsServices.update(contentsInitializer);
         return new ResponseEntity<>(updatedContents, HttpStatus.OK);

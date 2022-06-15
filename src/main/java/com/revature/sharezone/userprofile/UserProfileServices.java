@@ -7,6 +7,7 @@ import com.revature.sharezone.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,6 +94,16 @@ public class UserProfileServices implements Serviceable<UserProfile> {
 
         return authenticatedUserProfile.get();
 
+    }
+
+
+    public String[] adminUserProfile(boolean is_admin) {
+        List<UserProfile> userProfileList = userProfileDao.adminUserProfile(is_admin);
+        List<String> strList = new ArrayList<>();
+        for( UserProfile userProfile : userProfileList ) {
+            strList.add(userProfile.getUsername());
+        }
+        return (String[]) strList.toArray();
     }
 
 }

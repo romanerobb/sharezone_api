@@ -49,8 +49,16 @@ public class AuthAspect {
             throw new AuthenticationException("No session has been found, please login");
 
         UserProfile userProfile = (UserProfile) httpSession.getAttribute("authUser");
-        if(!allowedUsers.contains(userProfile.getUsername()))
-            throw new AuthenticationException("Forbidden request mde to sensitive endpoint by user" + userProfile.getUsername());
+
+        if(anno.isLoggedIn() == true && userProfile == null )
+            throw new AuthenticationException("Please log in before requesting this endpoint.");
+
+        System.out.println("userProfile: " + userProfile );
+        if(!allowedUsers.isEmpty() && !allowedUsers.contains(userProfile.getUsername()))
+            throw new AuthenticationException("Forbidden request made to sensitive endpoint by user" + userProfile.getUsername());
+
+        if(anno.needAdminLoggin() == true && !userProfile.isIs_admin() )
+            throw new AuthenticationException("You need admin privileges to run this endpoint.");
 
         // This continues to execute the method in question ( method below the @SecureEndpoint annotation)
         Object returned = pjp.proceed();

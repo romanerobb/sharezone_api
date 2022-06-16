@@ -54,6 +54,8 @@ public class AuthAspect {
 
         UserProfile userProfile = (UserProfile) httpSession.getAttribute("authUser");
 
+        System.out.println("authUser userProfile: "  + userProfile);
+
         if(anno.isLoggedIn() == true && userProfile == null )
             throw new AuthenticationException("Please log in before requesting this endpoint.");
 
@@ -63,6 +65,8 @@ public class AuthAspect {
 
         if(anno.isAdminOnly() == true)
             allowedUsers = userProfileServices.adminListUserProfile(anno.isAdminOnly());
+
+        System.out.println("allowedUsers allowedUsers: "  + allowedUsers);
 
         if(anno.isAdminOnly() == true && !allowedUsers.contains(userProfile.getUsername()))
             throw new AuthenticationException("You need admin privileges to log in as an expert.");

@@ -36,7 +36,7 @@ public class UserProfileServlet  implements Authable {
     }
 
     @GetMapping("/userprofile-findall")
-    @SecureEndpoint(isAdminOnly = true)
+//    @SecureEndpoint(isAdminOnly = true)
     public List<UserProfile> getAllUserProfiles(){
        return userProfileServices.readAll();
     }
@@ -107,7 +107,7 @@ public class UserProfileServlet  implements Authable {
     }
 
     @DeleteMapping("/userprofile")
-    @SecureEndpoint(isAdminOnly = true)
+//    @SecureEndpoint(isAdminOnly = true)
     public String deleteUserProfileById(@RequestParam String username) {
         if(userProfileServices.delete(username))
             return "delete the userprofile by : " + username + " working";

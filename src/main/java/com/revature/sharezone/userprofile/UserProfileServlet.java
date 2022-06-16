@@ -69,11 +69,7 @@ public class UserProfileServlet  implements Authable {
 
     @GetMapping("/userprofile")
     @SecureEndpoint(isLoggedIn = true)
-    public UserProfile findUserProfileByIdQueryParam(@RequestParam String username, HttpServletRequest request){
-        HttpSession httpSession = request.getSession(false);
-        UserProfile allowedUser = (UserProfile) httpSession.getAttribute("authUser");
-        if( !username.equals(allowedUser.getUsername()) && !allowedUser.isIs_admin() )
-            throw new AuthenticationException("You must be logged in with user id : " + username + " or an admin." );
+    public UserProfile findUserProfileByIdQueryParam(@RequestParam String username){
         UserProfile foundUserProfile = userProfileServices.readById(username);
         return foundUserProfile;
     }
@@ -96,12 +92,7 @@ public class UserProfileServlet  implements Authable {
 
     @PutMapping("/userprofile")
     @SecureEndpoint(isLoggedIn = true)
-    public ResponseEntity<UserProfile> updateUserProfile(@RequestBody UserProfile userProfile, HttpServletRequest request){
-        HttpSession httpSession = request.getSession(false);
-        UserProfile authUser = (UserProfile) httpSession.getAttribute("authUser");
-        if( !userProfile.getUsername().equals(authUser.getUsername()) && !authUser.isIs_admin() )
-            throw new AuthenticationException("You must be logged in with user id : " + authUser.getUsername() + " or an admin." );
-
+    public ResponseEntity<UserProfile> updateUserProfile(@RequestBody UserProfile userProfile){
         UserProfile updatedUserProfile = userProfileServices.update(userProfile);
         return new ResponseEntity<>(updatedUserProfile, HttpStatus.OK);
     }

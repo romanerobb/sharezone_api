@@ -1,4 +1,3 @@
-com\revature\sharezone\Controller.class
 com\revature\sharezone\userprofile\UserProfileServices.class
 com\revature\sharezone\userprofile\UserProfile.class
 com\revature\sharezone\userprofile\UserProfileServlet.class

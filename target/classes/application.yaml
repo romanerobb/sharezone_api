@@ -12,9 +12,9 @@ spring:
 
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://;serverName=sharezone.database.windows.net;databaseName=sharezonedb;encrypt=true
-    username: sharezone
-    password: Socialmedia2022
+    url: ${SQLAZURECONNSTR_sharezone}
+    username: ${DBUSER}
+    password: ${DBPASS}
 
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect

@@ -103,13 +103,13 @@ public class UserProfileServices implements Serviceable<UserProfile> {
     }
 
 
-    public String[] adminUserProfile(boolean is_admin) {
+    public List<String> adminListUserProfile(boolean is_admin) {
         List<UserProfile> userProfileList = userProfileDao.adminUserProfile(is_admin);
         List<String> strList = new ArrayList<>();
         for( UserProfile userProfile : userProfileList ) {
             strList.add(userProfile.getUsername());
         }
-        return (String[]) strList.toArray();
+        return strList;
     }
 
 }

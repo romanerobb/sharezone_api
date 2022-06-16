@@ -1,0 +1,33 @@
+# You've seen properties as things link hibernate.connection.url
+# server.port=
+# server.servlet.context-path=
+server:
+  port: 7000
+  servlet:
+    context-path: /
+# in a properties file, it would look like spring.application.name
+spring:
+  application:
+    name: sharezone
+
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: ${SQLAZURECONNSTR_sharezone}
+    username: ${DBUSER}
+    password: ${DBPASS}
+
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+# Default actuator gives us the health endpoint, we will add a few others
+management:
+  endpoints:
+    web:
+      exposure:
+        includes:
+          - "beans"
+          - "health"
+          - "info"

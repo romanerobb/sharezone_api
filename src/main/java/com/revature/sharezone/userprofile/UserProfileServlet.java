@@ -36,9 +36,16 @@ public class UserProfileServlet  implements Authable {
     }
 
     @GetMapping("/userprofile-findall")
-    @SecureEndpoint(needAdminLoggin = true)
+    @SecureEndpoint(isAdminOnly = true)
     public List<UserProfile> getAllUserProfiles(){
        return userProfileServices.readAll();
+    }
+
+
+    @GetMapping("/userprofile-findallSubscriber")
+    public List<UserProfile> getAllScribber(){
+        boolean is_subscriber = true;
+        return userProfileServices.readAll(true);
     }
 //
 //    @GetMapping("/userprofiles")
@@ -100,7 +107,7 @@ public class UserProfileServlet  implements Authable {
     }
 
     @DeleteMapping("/userprofile")
-    @SecureEndpoint(needAdminLoggin = true)
+    @SecureEndpoint(isAdminOnly = true)
     public String deleteUserProfileById(@RequestParam String username) {
         if(userProfileServices.delete(username))
             return "delete the userprofile by : " + username + " working";

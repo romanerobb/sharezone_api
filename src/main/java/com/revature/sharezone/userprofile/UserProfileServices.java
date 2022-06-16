@@ -28,6 +28,12 @@ public class UserProfileServices implements Serviceable<UserProfile> {
         return userProfiles;
     }
 
+
+    public List<UserProfile> readAll(boolean is_subscriber){
+        List<UserProfile> userProfiles = (List<UserProfile>) userProfileDao.findAllSubscriberUserProfile(is_subscriber);
+        return userProfiles;
+    }
+
     @Override
     public UserProfile readById(String id) throws ResourcePersistenceException{
 

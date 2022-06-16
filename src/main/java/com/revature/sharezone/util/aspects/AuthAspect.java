@@ -57,7 +57,7 @@ public class AuthAspect {
         if(!allowedUsers.isEmpty() && !allowedUsers.contains(userProfile.getUsername()))
             throw new AuthenticationException("Forbidden request made to sensitive endpoint by user" + userProfile.getUsername());
 
-        if(anno.needAdminLoggin() == true && !userProfile.isIs_admin() )
+        if(anno.isAdminOnly() == true && !userProfile.isIs_admin() )
             throw new AuthenticationException("You need admin privileges to run this endpoint.");
 
         // This continues to execute the method in question ( method below the @SecureEndpoint annotation)

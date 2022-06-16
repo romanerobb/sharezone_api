@@ -11,5 +11,5 @@ public @interface SecureEndpoint {
 
     boolean isLoggedIn() default false;
 
-    boolean needAdminLoggin() default false;
+    boolean isAdminOnly() default false;
 }

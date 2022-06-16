@@ -16,4 +16,9 @@ public interface UserProfileDao extends CrudRepository<UserProfile, String> {
     @Query(value = "FROM UserProfile WHERE is_admin = :is_admin")
     List<UserProfile> adminUserProfile(boolean is_admin);
 
+    @Query(value = "FROM UserProfile WHERE is_subscriber = :is_subscriber")
+    List<UserProfile> findAllSubscriberUserProfile(boolean is_subscriber);
+
+
+
 }

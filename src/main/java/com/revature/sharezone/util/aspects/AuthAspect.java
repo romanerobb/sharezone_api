@@ -1,6 +1,7 @@
 package com.revature.sharezone.util.aspects;
 
 import com.revature.sharezone.userprofile.UserProfile;
+import com.revature.sharezone.userprofile.UserProfileServices;
 import com.revature.sharezone.util.exceptions.AuthenticationException;
 import com.revature.sharezone.util.web.SecureEndpoint;
 import org.apache.catalina.User;
@@ -24,11 +25,14 @@ public class AuthAspect {
     // We will get cookies from frontend
     //              which like Axios and Fetch do not handle.
     private HttpServletRequest request;
+    private UserProfileServices userProfileServices;
 
     @Autowired
-    public AuthAspect(HttpServletRequest request) {
+    public AuthAspect(HttpServletRequest request, UserProfileServices userProfileServices) {
         this.request = request;
+        this.userProfileServices = userProfileServices;
     }
+
 
     // ProceedingJoinEndPoint is looking for any annotations from the above of the method signature
     // We want to do this anything has the SecureEndpoint annotation
@@ -49,8 +53,19 @@ public class AuthAspect {
             throw new AuthenticationException("No session has been found, please login");
 
         UserProfile userProfile = (UserProfile) httpSession.getAttribute("authUser");
-        if(!allowedUsers.contains(userProfile.getUsername()))
-            throw new AuthenticationException("Forbidden request mde to sensitive endpoint by user" + userProfile.getUsername());
+
+        if(anno.isLoggedIn() == true && userProfile == null )
+            throw new AuthenticationException("Please log in before requesting this endpoint.");
+
+        System.out.println("userProfile: " + userProfile );
+        if(!allowedUsers.isEmpty() && !allowedUsers.contains(userProfile.getUsername()))
+            throw new AuthenticationException("Forbidden request made to sensitive endpoint by user" + userProfile.getUsername());
+
+        if(anno.isAdminOnly() == true)
+            allowedUsers = userProfileServices.adminListUserProfile(anno.isAdminOnly());
+
+        if(anno.isAdminOnly() == true && !allowedUsers.contains(userProfile.getUsername()))
+            throw new AuthenticationException("You need admin privileges to log in as an expert.");
 
         // This continues to execute the method in question ( method below the @SecureEndpoint annotation)
         Object returned = pjp.proceed();

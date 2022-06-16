@@ -16,7 +16,6 @@ spring:
     username: ${DBUSER}
     password: ${DBPASS}
 
-
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true

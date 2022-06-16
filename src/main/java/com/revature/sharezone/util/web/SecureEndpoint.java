@@ -10,4 +10,6 @@ public @interface SecureEndpoint {
     String[] allowedUsers() default {};
 
     boolean isLoggedIn() default false;
+
+    boolean isAdminOnly() default false;
 }

@@ -7,6 +7,8 @@
     <list default="true" id="a25ee92e-324b-49f4-9b23-89ce57822fee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/sharezone/userprofile/UserProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/sharezone/userprofile/UserProfileServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/sharezone-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/sharezone-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/sharezone-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/sharezone-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

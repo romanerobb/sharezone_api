@@ -61,14 +61,14 @@ public class UserProfileServlet  implements Authable {
 //    }
 
     @GetMapping("/userprofile/{username}")
-    @SecureEndpoint(isLoggedIn = true)
+//    @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<UserProfile> findUserProfileById(@PathVariable String username){
         UserProfile foundUserProfile = userProfileServices.readById(username);
         return new ResponseEntity<>(foundUserProfile, HttpStatus.OK);
     }
 
     @GetMapping("/userprofile")
-    @SecureEndpoint(isLoggedIn = true)
+//    @SecureEndpoint(isLoggedIn = true)
     public UserProfile findUserProfileByIdQueryParam(@RequestParam String username){
         UserProfile foundUserProfile = userProfileServices.readById(username);
         return foundUserProfile;
@@ -91,7 +91,7 @@ public class UserProfileServlet  implements Authable {
 //    }
 
     @PutMapping("/userprofile")
-    @SecureEndpoint(isLoggedIn = true)
+ //   @SecureEndpoint(isLoggedIn = true)
     public ResponseEntity<UserProfile> updateUserProfile(@RequestBody UserProfile userProfile){
         UserProfile updatedUserProfile = userProfileServices.update(userProfile);
         return new ResponseEntity<>(updatedUserProfile, HttpStatus.OK);

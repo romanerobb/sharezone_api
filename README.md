@@ -43,19 +43,12 @@
 
 ## MVP User Stories: 
 -	Create a user account.
--	User can write a comment.
--	User can like a comment.
--	Admin can delete a comment.
--	Users can like a blog/news post.
+-	Experts can ban user accounts.
 -	Users can delete their accounts.
+-	ONLY Experts can create news content.
+-	Experts can view all users.
 -	Users can update their account information.
--	ONLY admins can create news content.
--	Non-users/guests can view posts and comments.
--	Users can share content with third party apps.
--	Admins can view all users.
-
-## Additional User Stories: 
--	Admins can create subscriptions.
--	Convert a “power” user to an admin.
--	Users can subscribe to a particular admin.
--	Admin can ban accounts.
+-	Experts can create accounts.
+-	Users can register for an account.
+-	Experts can delete contents.
+-	Experts can modify contents.
